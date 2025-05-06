@@ -1,0 +1,72 @@
+`make` resulted in the following errors:
+
+```
+mkdir -p build
+gcc -Wall -std=c11 -pthread -c src/client-p1.c -o build/p1client.o
+gcc -Wall -std=c11 -pthread -c src/ttt.c -o build/ttt.o
+gcc -Wall -std=c11 -pthread build/p1client.o build/ttt.o -o p1client
+gcc -Wall -std=c11 -pthread -c src/server-p1.c -o build/p1server.o
+gcc -Wall -std=c11 -pthread build/p1server.o build/ttt.o -o p1server
+gcc -Wall -std=c11 -pthread -c src/client-p2.c -o build/p2client.o
+gcc -Wall -std=c11 -pthread build/p2client.o build/ttt.o -o p2client
+gcc -Wall -std=c11 -pthread -c src/server-p2.c -o build/p2server.o
+src/server-p2.c: In function 'server2_sendGameState':
+src/server-p2.c:280:60: error: expected ';' before '}' token
+  280 |     send(clientSocket, gameState, strlen(gameState) + 1, 0)
+      |                                                            ^
+      |                                                            ;
+  281 | }
+      | ~
+src/server-p2.c: In function 'main':
+src/server-p2.c:303:5: warning: implicit declaration of function 'signal' [-Wimplicit-function-declaration]
+  303 |     signal(SIGINT, handle_exit);
+      |     ^~~~~~
+src/server-p2.c:303:12: error: 'SIGINT' undeclared (first use in this function)
+  303 |     signal(SIGINT, handle_exit);
+      |            ^~~~~~
+src/server-p2.c:303:12: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Makefile:34: build/p2server.o] Error 1
+```
+
+This would be a -25 point deduction. Thankfully, it only effected part 2, so the
+25 points are removed from part 2. As we see below, part 2 only got 10 points,
+and we won't go into negatives, so the score for part 2 is 0.
+
+# Documentation (20/25)
+ - All messages outlined for part 1
+ - Addresses important questions for part 1
+ - All messages outlined for part 2
+ - Addresses important questions for part 2 (-5): ack message not well justified
+
+The aknowledgement ack from part 2 was not properly implemented. The description
+here doesn't explain why it's needed here either.
+
+# Part 1 (37.5/37.5)
+ / Correct client args
+ / Server does not auto-generate move
+ / Client is notified for start
+ / Both sides notified when game over
+ / Invalid move handled correctly
+ / Out of turn move handled correctly
+ / Client 30s of inactivity causes disconnect
+
+# Part 2 (0/37.5): needed to fix code and poor implementation when fixed
+ - Plays standard game from part 1 (-12.5): Not really
+ / Both clients can join room
+ / Third client is rejected from room
+ - Room becomes available again (-5): server exits
+ - Timeout causes game to end (-5): it doesn't
+ - Server does not timeout (-5): it actually exits with the game
+
+Something is really wrong with the protocol. It seems like each client has to
+type the mark command twice for it to go through. When the game ends, sometimes
+one of the clients stays playing. The server exits after the room exits as
+well. It seem that after the first `MARK` gets sent, the server tells both
+players its their turn again...
+
+Overall, this is not a good implementation of the protocol.
+
+
+Total: 57.5/100
+
+Marked by: Akemi Izuko <izuko@ualberta.ca>
