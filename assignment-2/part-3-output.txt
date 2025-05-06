@@ -1,0 +1,59 @@
+net.ipv4.tcp_congestion_control = reno
+h1 h1-eth0:s1-eth1
+h2 h2-eth0:s1-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Ping times (510): 53.828ms +- 30.241ms
+Download times (7): 5.394s +- 0.733s
+
+net.ipv4.tcp_congestion_control = cubic
+h1 h1-eth0:s1-eth1
+h2 h2-eth0:s1-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> X 
+*** Results: 50% dropped (1/2 received)
+Ping times (493): 46.653ms +- 24.072ms
+Download times (7): 5.438s +- 1.024s
+
+net.ipv4.tcp_congestion_control = bbr
+h1 h1-eth0:s1-eth1
+h2 h2-eth0:s1-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Ping times (461): 73.222ms +- 38.526ms
+Download times (6): 6.913s +- 0.971s
+
+net.ipv4.tcp_congestion_control = reno
+h1 h1-eth0:s1-eth1
+h2 h2-eth0:s1-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> X 
+*** Results: 50% dropped (1/2 received)
+Ping times (513): 55.560ms +- 40.744ms
+Download times (7): 5.521s +- 1.016s
+
+net.ipv4.tcp_congestion_control = cubic
+h1 h1-eth0:s1-eth1
+h2 h2-eth0:s1-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Ping times (562): 51.086ms +- 30.672ms
+Download times (7): 6.296s +- 1.921s
+
+net.ipv4.tcp_congestion_control = bbr
+h1 h1-eth0:s1-eth1
+h2 h2-eth0:s1-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Ping times (529): 153.480ms +- 111.268ms
+Download times (8): 4.738s +- 0.516s

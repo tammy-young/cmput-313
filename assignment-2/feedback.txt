@@ -1,0 +1,9 @@
+Marking TA: Xin Yang (xyang18@ualberta.ca)
+
+# Part 1 (30/30)
+
+# Part 2 (45/50)
+  -5: Q2.2 Buffer size of 50 has larger std hence higher volatility
+# Part 3 (20/20)
+    
+Total: 95/100
