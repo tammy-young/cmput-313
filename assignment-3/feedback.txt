@@ -1,0 +1,21 @@
+Grading TA: Steven Oufan Hai 
+email: oufan@ualberta.ca
+
+Late: -20
+
+Longest prefix matching [15 points]
+- full marks
+
+Implementation of ARP cache [10 points]
+- packets should be one sec apart: -5 
+
+Layer-3 validation of incoming packets [10 points]
+- full marks 
+
+Adherence to other requirements [15 points]
+- warning during compile: -5 
+
+Passing connectivity tests [50 points]
+- full marks 
+
+Total: 70
